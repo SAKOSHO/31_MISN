@@ -1,10 +1,11 @@
 /**********************************************************************
- * File         :spi.h                       
- * Date         :2020/8/4
+ * File         :MCP2515.h                       
+ * Date         :2021/06/29
  * Summary      :Use for spi communication
  * CPU type     :PIC16F886
  * Compiler     :XC8
- * Author       :Akaru Oishi
+ * Author       :Sasaki Sho
+ * Discription  :MCP2515のヘッダファイル
 * ***********************************************************************/
 
 
@@ -31,10 +32,14 @@
 #define _RXB0DLC                            0b01100101
 #define _RXF0SIDH                           0b00000000
 #define _RXF0SIDL                           0b00000001
+#define _RXF0EID8                           0b00000010
+#define _RXF0EID0                           0b00000011
 #define _RXF1SIDH                           0b00000100
 #define _RXF1SIDL                           0b00000101
 #define _RXM0SIDH                           0b00100000
 #define _RXM0SIDL                           0b00100001
+#define _RXM0EID8                           0b00100010
+#define _RXM0EID0                           0b00100011
 #define _RXM1SIDH                           0b00100100
 #define _RXM1SIDL                           0b00100101
 #define _RXB0SIDH                           0b01100001
@@ -48,8 +53,6 @@
 #define _CANSTAT                            0b00001110
 #define _CANINTE                            0b00101011
 #define _CANINTF                            0b00101100
-#define _TEC                                0b00011100
-#define _REC                                0b00011101
 #define _EFLG                               0b00101101
 
 /*---Define（Read RX Buffer format）---*/
@@ -75,12 +78,6 @@
 #define _Flagbit5                           0b00100000
 #define _Flagbit6                           0b01000000
 #define _Flagbit7                           0b10000000
-
-
-/*---Modebit---*/
-#define _Modebit1                           0b00000001
-#define _Modebit2                           0b00000010
-#define _Modebit3                           0b00000011
 
 
 #define _CANRX_STRAGE_SIZE                  8                  

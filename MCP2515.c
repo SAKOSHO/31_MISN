@@ -26,12 +26,12 @@ void MCP2515_init(char bps)
 {                                                                               //初期設定
     Write(_CANCTRL , 0b10001000);                                               //コンフィギュレーションモード
     Write(_BFPCTRL , 0b00000000);                                               //RXnBFピン制御と状態初期化
-    Write(_TXB0CTRL, 0b00000000);                                               //送信バッファ0制御レジスタ初期化
-    Write(_RXB0CTRL, 0b00000000);                                               //受信バッファ0制御レジスタ初期化
-    Write(_RXB1CTRL, 0b00000000);                                               //受信バッファ1制御レジスタ初期化
-    Write(_CANINTE , 0b00000001);                                               //割り込み初期化
+    Write(_TXB0CTRL , 0b00000000);                                              //送信バッファ0制御レジスタ初期化
+    Write(_RXB0CTRL , 0b00000000);                                              //受信バッファ0制御レジスタ初期化
+    Write(_RXB1CTRL , 0b00000000);                                              //受信バッファ1制御レジスタ初期化
+    Write(_CANINTE , 0b00000000);                                               //割り込み初期化
     Write(_CANINTF , 0b00000000);                                               //割り込みフラグ初期化
-    Write(_EFLG    , 0b00000000);                                               //エラーフラグ初期化
+    Write(_EFLG , 0b00000000);                                                  //エラーフラグ初期化
     
     if(bps == 0)
     {
@@ -185,6 +185,7 @@ void RTS0(char time)
     PORTAbits.RA5 = 0;
     spi_putc(0b10000001);
     PORTAbits.RA5 = 1;
+    /*
     if(time == 0)
     {
         __delay_us(1500);
@@ -196,6 +197,8 @@ void RTS0(char time)
     if(time == 2){
         __delay_us(200);
     }
+    */
+    __delay_ms(1);
 }
 
 void RTS0_CSS(char time)
@@ -203,7 +206,6 @@ void RTS0_CSS(char time)
     PORTAbits.RA5 = 0;
     spi_putc(0b10000001);
     PORTAbits.RA5 = 1;
-    /*
     if(time == 0)
     {
         __delay_us(1000);
@@ -214,9 +216,8 @@ void RTS0_CSS(char time)
     }
     if(time == 2)
     {
-        __delay_us(100);
+        __delay_us(120);
     }
-    */
 }
 
 void RTS1(void);
